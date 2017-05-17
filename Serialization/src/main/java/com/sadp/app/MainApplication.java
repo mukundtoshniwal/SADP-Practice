@@ -27,10 +27,10 @@ public class MainApplication {
             e.printStackTrace();
         }
 
-        TypeReference<List<Employee>> mapType = new TypeReference<List<Employee>>() {};
+        TypeReference<List<Employee>> typeReference = new TypeReference<List<Employee>>() {};
         List<Employee> employeeReadList = Collections.emptyList();
         try {
-            employeeReadList = readListOfEmployeesFromJson(new File("employeeData.json"), mapType);
+            employeeReadList = readListOfEmployeesFromJson(new File("employeeData.json"), typeReference);
             System.out.println("Object de-serialized properly.");
         } catch (IOException e) {
             System.out.println("Object could not be de-serialized properly.");
@@ -73,9 +73,9 @@ public class MainApplication {
         return employeeList;
     }
 
-    private static <T> T readListOfEmployeesFromJson(File file, TypeReference<T> mapType) throws IOException {
+    private static <T> T readListOfEmployeesFromJson(File file, TypeReference<T> typeReference) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(file, mapType);
+        return mapper.readValue(file, typeReference);
     }
 
     private static void writeListOfEmployeesToJson(File file, List<Employee> employeeList) throws IOException {
