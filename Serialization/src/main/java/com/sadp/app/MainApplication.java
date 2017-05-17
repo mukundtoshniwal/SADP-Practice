@@ -34,12 +34,16 @@ public class MainApplication {
             System.out.println("Object de-serialized properly.");
         } catch (IOException e) {
             System.out.println("Object could not be de-serialized properly.");
-
             e.printStackTrace();
         }
         System.out.println("Employee Details: ");
         System.out.println();
 
+        printEmployeeDetails(employeeReadList);
+
+    }
+
+    private static void printEmployeeDetails(List<Employee> employeeReadList) {
         employeeReadList.forEach((x)-> {
             System.out.print("First Name: "+ x.getFirstName()+"\t");
             System.out.print("Last Name: "+ x.getLastName()+"\t");
@@ -47,7 +51,6 @@ public class MainApplication {
             System.out.print("Salary: "+ x.getSalary()+"\t");
             System.out.println("Department Name:"+x.getDepartment().getDeptName());
         });
-
     }
 
     private static List<Employee> getEmployeeList() {
