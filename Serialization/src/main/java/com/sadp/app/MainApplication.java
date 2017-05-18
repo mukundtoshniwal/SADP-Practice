@@ -15,10 +15,12 @@ import java.util.List;
 public class MainApplication {
 
     public static void main(String[] args) {
+        // I would prefer a logger instead. This is a small application but it is better habit to have logger.
         System.out.println("Java Serialization");
 
         List<Employee> employeeList = getEmployeeList();
 
+        // It is better to have a separate method for both seriliazation and desirialization. Makes the code more readable.
         try {
             writeListOfEmployeesToJson(new File("employeeData.json"),employeeList);
             System.out.println("Object serialized properly.");
@@ -45,6 +47,8 @@ public class MainApplication {
 
     private static void printEmployeeDetails(List<Employee> employeeReadList) {
         employeeReadList.forEach((x)-> {
+            //You can write a good toString method using Guava library in the WMployee object itself and directly print the employee details using toString instead of 
+            //printing details in this main method. 
             System.out.print("First Name: "+ x.getFirstName()+"\t");
             System.out.print("Last Name: "+ x.getLastName()+"\t");
             System.out.print("Address: "+ x.getAddress()+"\t");
